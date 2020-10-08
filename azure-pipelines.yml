@@ -15,3 +15,16 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+
+- task: CmdLine@2
+  displayName: Install Newman
+  inputs:
+    script: 'npm install -g newman'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- task: CmdLine@2
+  displayName: Run Example Tests
+  inputs:
+    script: 'newman run PostmanTests.postman_collection.json -e PostmanTestEnv.postman_environment.json --reporters cli,junit --reporter-junit-export Results\junitReport.xml'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
