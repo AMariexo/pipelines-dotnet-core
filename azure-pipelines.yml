@@ -23,6 +23,10 @@ steps:
     script: 'sudo npm install -g newman'
 
 - task: CmdLine@2
+  inputs:
+    script: 'echo ''$(System.DefaultWorkingDirectory)'''
+
+- task: CmdLine@2
   displayName: Run Example Tests
   inputs:
     script: 'newman run PostmanTests.postman_collection.json -e PostmanTestEnv.postman_environment.json --reporters cli,junit --reporter-junit-export Results\junitReport.xml'
