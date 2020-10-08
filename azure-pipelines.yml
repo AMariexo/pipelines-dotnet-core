@@ -21,7 +21,6 @@ steps:
   displayName: Install Newman
   inputs:
     script: 'npm install -g newman'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 - task: CmdLine@2
   displayName: Run Example Tests
