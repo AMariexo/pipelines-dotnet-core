@@ -22,6 +22,7 @@ steps:
   displayName: Install Newman
   inputs:
     script: 'sudo npm install -g newman'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 - task: CmdLine@2
   inputs:
@@ -32,6 +33,8 @@ steps:
   inputs:
     script: 'newman run PostmanTests.postman_collection.json -e PostmanTestEnv.postman_environment.json --reporters cli,junit --reporter-junit-export PostmanResults\junitReport.xml'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+
 
 - task: PublishTestResults@2
   inputs:
