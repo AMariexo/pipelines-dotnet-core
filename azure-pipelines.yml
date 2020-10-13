@@ -39,4 +39,4 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)\Results\*.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/Results/*.xml'
